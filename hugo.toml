@@ -1,0 +1,4 @@
+baseURL = 'https://mook.blog/'
+languageCode = 'nl-nl'
+title = 'My New Hugo Project'
+theme = 'hugo-narrow'
