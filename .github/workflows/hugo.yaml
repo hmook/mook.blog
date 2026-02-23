@@ -1,11 +1,14 @@
 name: Deploy Hugo site to Pages
+
 on:
   push:
     branches: ["main"]
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,12 +22,13 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
-- name: Build
+      - name: Build
         run: hugo --minify
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Blijf bij v3 of v4, maar check de match
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+
   deploy:
     environment:
       name: github-pages
@@ -34,4 +38,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # Zorg dat deze v4 is
+        uses: actions/deploy-pages@v4
